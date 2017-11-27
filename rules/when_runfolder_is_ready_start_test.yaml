@@ -1,0 +1,18 @@
+---
+name: when_runfolder_is_ready_start_test
+pack: arteria
+description: "Fires bcl2fastq processing when a runfolder is ready"
+enabled: false
+
+trigger:
+  type: "arteria.runfolder_ready"
+
+criteria: {}
+
+action:
+    # TODO Change this!
+    ref: "core.local"
+    parameters:
+        cmd: "echo Hello World"
+
+

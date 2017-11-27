@@ -1,0 +1,3 @@
+runfolder_svc_urls:
+  - http://runfolder-service/api/1.0/runfolders/pickup
+

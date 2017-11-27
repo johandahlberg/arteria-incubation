@@ -1,0 +1,7 @@
+---
+
+runfolder_svc_urls:
+  description: "Urls for the runfolder service"
+  type: "array"
+  required: false
+
