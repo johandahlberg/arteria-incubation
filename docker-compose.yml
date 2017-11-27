@@ -1,0 +1,83 @@
+version: '3'
+
+services:
+  stackstorm:
+    image: stackstorm/stackstorm
+    container_name: stackstorm
+    env_file:
+      - docker-conf/stackstorm.env
+      - docker-conf/mongo.env
+      - docker-conf/rabbitmq.env
+      - docker-conf/postgres.env
+      - docker-conf/redis.env
+    ports:
+      - "443:443"
+    networks:
+      - public
+      - private
+    volumes:
+      # Mount this development dir into the packs
+      - ./:/opt/stackstorm/packs.dev/arteria
+      - stackstorm-log-volume:/var/log
+      - ./docker-runtime/entrypoint.d:/st2-docker/entrypoint.d
+      - ./docker-runtime/st2.d:/st2-docker/st2.d
+      - ./docker-conf/stackstorm.env:/st2-docker/env
+    dns_search: .
+    # TODO Remove this!
+    dns: 130.238.178.200
+
+### External Services
+
+  mongo:
+    image: mongo:3.4
+    container_name: mongo
+    env_file:
+      - docker-conf/mongo.env
+    networks:
+      - private
+    volumes:
+      - mongo-volume:/data/db
+    dns_search: .
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    env_file:
+      - docker-conf/rabbitmq.env
+    networks:
+      - private
+    volumes:
+      - rabbitmq-volume:/var/lib/rabbitmq
+    dns_search: .
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    env_file:
+      - docker-conf/postgres.env
+    networks:
+      - private
+    volumes:
+      - postgres-volume:/var/lib/postgresql/data
+    dns_search: .
+  redis:
+    image: redis:latest
+    container_name: redis
+    env_file:
+      - docker-conf/redis.env
+    networks:
+      - private
+    volumes:
+      - redis-volume:/data
+    dns_search: .
+
+volumes:
+  mongo-volume:
+  postgres-volume:
+  rabbitmq-volume:
+  redis-volume:
+  stackstorm-log-volume:
+
+networks:
+  public:
+    driver: bridge
+  private:
+    driver: bridge
