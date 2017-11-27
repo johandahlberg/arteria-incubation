@@ -23,8 +23,19 @@ services:
       - ./docker-runtime/st2.d:/st2-docker/st2.d
       - ./docker-conf/stackstorm.env:/st2-docker/env
     dns_search: .
-    # TODO Remove this!
-    dns: 130.238.178.200
+
+### Arteria Services
+  runfolder-service:
+    build: images/runfolder-service
+    container_name: runfolder-service
+    ports:
+      - "80:80"
+    networks:
+      - private
+    volumes:
+      # Mount this development dir into the packs
+      - ./arteria_test_data:/opt/monitored-folder
+    dns_search: .
 
 ### External Services
 
