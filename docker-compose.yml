@@ -17,7 +17,7 @@ services:
       - private
     volumes:
       # Mount this development dir into the packs
-      - ./:/opt/stackstorm/packs.dev/arteria
+      - ./:/opt/stackstorm/packs/arteria
       - stackstorm-log-volume:/var/log
       - ./docker-runtime/entrypoint.d:/st2-docker/entrypoint.d
       - ./docker-runtime/st2.d:/st2-docker/st2.d

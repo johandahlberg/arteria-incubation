@@ -13,6 +13,6 @@ action:
     # TODO Change this!
     ref: "core.local"
     parameters:
-        cmd: "echo Hello World"
+        cmd: "date"
 
 

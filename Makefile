@@ -5,7 +5,7 @@ up:
 down:
 	docker-compose down
 
-interact:
+interact: up
 	docker exec -it stackstorm /bin/bash
 
 exec:
