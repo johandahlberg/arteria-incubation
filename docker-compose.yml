@@ -1,6 +1,8 @@
 version: '3'
 
 services:
+
+### Stackstorm
   stackstorm:
     image: stackstorm/stackstorm
     container_name: stackstorm
@@ -29,7 +31,21 @@ services:
     build: images/runfolder-service
     container_name: runfolder-service
     ports:
-      - "80:80"
+      - "8080:80"
+    networks:
+      - private
+    volumes:
+      # Mount this development dir into the packs
+      - ./arteria_test_data:/opt/monitored-folder
+      - ./arteria_bcl2fastq_test_output:/bcl2fastq_output
+      - ./arteria_bcl2fastq_logs:/bcl2fastq_logs
+    dns_search: .
+
+  bcl2fastq-service:
+    build: images/bcl2fastq-service
+    container_name: bcl2fastq-service
+    ports:
+      - "8081:80"
     networks:
       - private
     volumes:
