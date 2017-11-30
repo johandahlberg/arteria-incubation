@@ -38,7 +38,6 @@ services:
       # Mount this development dir into the packs
       - ./arteria_test_data:/opt/monitored-folder
       - ./arteria_bcl2fastq_test_output:/bcl2fastq_output
-      - ./arteria_bcl2fastq_logs:/bcl2fastq_logs
     dns_search: .
 
   bcl2fastq-service:
@@ -51,8 +50,21 @@ services:
     volumes:
       # Mount this development dir into the packs
       - ./arteria_test_data:/opt/monitored-folder
+      - ./arteria_bcl2fastq_test_output:/bcl2fastq_output
     dns_search: .
 
+  checkqc-service:
+    build: images/checkqc-service
+    container_name: checkqc-service
+    ports:
+      - "8082:80"
+    networks:
+      - private
+    volumes:
+      # Mount this development dir into the packs
+      - ./arteria_test_data:/opt/monitored-folder
+      - ./arteria_bcl2fastq_test_output:/bcl2fastq_output
+    dns_search: .
 ### External Services
 
   mongo:

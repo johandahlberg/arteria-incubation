@@ -1,12 +1,12 @@
-FROM centos:7
+From centos:7
 
-WORKDIR /tmp
-RUN yum install -y epel-release
-RUN yum update -y
-RUN yum install -y unzip python-pip python-virtualenv git gcc-c++ wget
-RUN wget ftp://webdata2:webdata2@ussd-ftp.illumina.com/downloads/software/bcl2fastq/bcl2fastq2-v2.17.1.14-Linux-x86_64.zip
-RUN unzip bcl2fastq2-v2.17.1.14-Linux-x86_64.zip
-RUN yum install -y bcl2fastq2-v2.17.1.14-Linux-x86_64.rpm
+workdir /tmp
+run yum install -y epel-release
+run yum update -y
+run yum install -y unzip python-pip python-virtualenv git gcc-c++ wget
+run wget https://support.illumina.com/content/dam/illumina-support/documents/downloads/software/bcl2fastq/bcl2fastq2-v2-20-0-linux-x86-64.zip
+run unzip bcl2fastq2-v2-20-0-linux-x86-64.zip
+RUN yum install -y bcl2fastq2-v2.20.0.422-Linux-x86_64.rpm
 
 # setup arteria-runfolder service
 WORKDIR /

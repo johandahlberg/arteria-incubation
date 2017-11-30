@@ -14,6 +14,11 @@ st2 rule enable arteria.when_runfolder_is_ready_start_test
 Running the bcl2fastq service:
 
 ```
-curl -X POST --data '{}' bcl2fastq-service/api/1.0/start/150605_M00485_0183_000000000-ABGT6_testbio14
+curl -X POST --data '{}' http://bcl2fastq-service/api/1.0/start/150605_M00485_0183_000000000-ABGT6_testbio14
 ```
 
+Running the checkqc service:
+
+```
+curl http://checkqc-service/qc/150605_M00485_0183_000000000-ABGT6_testbio14
+```
