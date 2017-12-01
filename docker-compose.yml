@@ -35,9 +35,7 @@ services:
     networks:
       - private
     volumes:
-      # Mount this development dir into the packs
-      - ./arteria_test_data:/opt/monitored-folder
-      - ./arteria_bcl2fastq_test_output:/bcl2fastq_output
+      - ./docker-mountpoints/monitored-folder:/opt/monitored-folder
     dns_search: .
 
   bcl2fastq-service:
@@ -48,9 +46,8 @@ services:
     networks:
       - private
     volumes:
-      # Mount this development dir into the packs
-      - ./arteria_test_data:/opt/monitored-folder
-      - ./arteria_bcl2fastq_test_output:/bcl2fastq_output
+      - ./docker-mountpoints/monitored-folder:/opt/monitored-folder
+      - ./docker-mountpoints/bcl2fastq-output:/bcl2fastq-output
     dns_search: .
 
   checkqc-service:
@@ -61,9 +58,8 @@ services:
     networks:
       - private
     volumes:
-      # Mount this development dir into the packs
-      - ./arteria_test_data:/opt/monitored-folder
-      - ./arteria_bcl2fastq_test_output:/bcl2fastq_output
+      - ./docker-mountpoints/monitored-folder:/opt/monitored-folder
+      - ./docker-mountpoints/bcl2fastq-output:/bcl2fastq-output
     dns_search: .
 ### External Services
 
