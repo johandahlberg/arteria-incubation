@@ -22,3 +22,11 @@ Running the checkqc service:
 ```
 curl http://checkqc-service/qc/150605_M00485_0183_000000000-ABGT6_testbio14
 ```
+
+Running the workflow:
+
+```
+st2 run arteria.workflow_bcl2fastq_and_checkqc runfolder_path="/opt/monitored-folder/150605_M00485_0183_000000000-ABGT6_testbio14"
+```
+
+
