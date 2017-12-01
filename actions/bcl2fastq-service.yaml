@@ -1,0 +1,32 @@
+---
+name: "bcl2fastq-service"
+runner_type: "python-script"
+description: "Pass commands to the bcl2fastq service"
+enabled: true
+entry_point: "bcl2fastq-service.py"
+parameters:
+      cmd:
+        type: "string"
+        description: "Command to issue to the runfolder. Options are: start/poll"
+        required: true
+        position: 0      
+      url:
+        type: "string"
+        description: "URL to runfolder-service. Required for command: start"
+        required: false
+        position: 1
+      runfolder:
+        type: "string"
+        description: "Runfolder to get or set state for. Valid with commmands: start"
+        required: false
+        position: 2
+      bcl2fastq_body:
+        type: object
+        description: "A json object to pass to bcl2fastq to set its options. Valid with commands: start"
+        required: false
+        position: 3
+      status_url:
+        type: string
+        description: "Url used to poll for the status of a bcl2fastq run. Valid with command: poll"
+        required: false
+        position: 4
