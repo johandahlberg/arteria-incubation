@@ -30,3 +30,9 @@ parameters:
         description: "Url used to poll for the status of a bcl2fastq run. Valid with command: poll"
         required: false
         position: 4
+      sleep:
+        type: integer
+        description: "Seconds to sleep between polling.Valid with command: poll"
+        required: false
+        position: 5
+        default: 300 #minutes

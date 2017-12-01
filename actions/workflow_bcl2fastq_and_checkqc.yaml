@@ -1,0 +1,11 @@
+---
+name: "workflow_bcl2fastq_and_checkqc"
+runner_type: mistral-v2
+description: "This workflow will run bcl2fastq and CheckQC on a specified runfolder"
+enabled: true
+entry_point: workflows/bcl2fastq_and_checkqc.yaml
+parameters:
+      runfolder_path:
+        type: "string"
+        description: "Path to the runfolder to execute the workflow on"
+        required: true
