@@ -63,7 +63,7 @@ Arteria pack. You only need to do this the first time you bring up the environme
 
 ```
 # Copy the default config into the StackStorm config directory
-cp /opt/stackstorm/packs/arteria/default.config.yaml /opt/stackstorm/configs/
+cp /opt/stackstorm/packs/arteria/default.config.yaml /opt/stackstorm/configs/arteria.yaml
 
 # Ensure that the Arteria virtual env is installed
 st2 run packs.setup_virtualenv packs=arteria
