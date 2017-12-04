@@ -19,7 +19,7 @@ class RunfolderSensor(PollingSensor):
     def setup(self):
         self._infolog("setup")
         try:
-            client_urls = self._config["runfolder_svc_urls"]
+            client_urls = self._config["runfolder_service_urls"]
             self._client = RunfolderClient(client_urls, self._logger)
             self._infolog("Created client: {0}".format(self._client))
         except Exception as ex:

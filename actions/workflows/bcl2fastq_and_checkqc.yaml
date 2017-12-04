@@ -9,8 +9,10 @@ workflows:
     type: direct
     input:
       - runfolder_path
+      - runfolder_url
+      - bcl2fastq_url
+      - checkqc_url
     tasks:
-
       get_runfolder_name:
         action: core.local
         input:

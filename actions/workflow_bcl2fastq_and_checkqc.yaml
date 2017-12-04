@@ -9,3 +9,18 @@ parameters:
         type: "string"
         description: "Path to the runfolder to execute the workflow on"
         required: true
+      runfolder_url:
+        type: "string"
+        description: "URL to the runfolder service"
+        required: true
+        default: "{{ config_context.runfolder_service_urls }}"
+      bcl2fastq_url:
+        type: "string"
+        description: "URL to the runfolder service"
+        required: true
+        default: "{{ config_context.bcl2fastq_service_url }}"
+      checkqc_url:
+        type: "string"
+        description: "URL to the runfolder service"
+        required: true
+        default: "{{ config_context.checkqc_service_url }}"
