@@ -133,3 +133,12 @@ st2 run arteria.runfolder-service cmd="set_state" state="ready" runfolder="/opt/
 
 Withing 15s you should if you execute `st2 execution list` see that a workflow processing that runfolder
 has started. This is the way that Arteria can be used to automatically start processes as needed.
+
+Running tests
+-------------
+
+To run the pack tests, run the following command in the StackStorm container:
+
+```
+st2-run-pack-tests -c -j -v -p /opt/stackstorm/packs/arteria
+```

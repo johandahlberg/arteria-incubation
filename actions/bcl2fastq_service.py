@@ -17,7 +17,7 @@ class ArteriaBcl2FastqServiceAction(Action):
     def _verify_command_valid(self, cmd):
         return cmd in self.COMMANDS
 
-    def run(self, cmd, url, runfolder, bcl2fastq_body, status_url, sleep):
+    def run(self, cmd, url, runfolder, bcl2fastq_body=None, status_url=None, sleep=None):
 
         if not self._verify_command_valid(cmd):
             self.logger.error("Command: {} is not valid. Valid commands are: {}".format(cmd, self.COMMANDS))
