@@ -13,7 +13,7 @@ parameters:
         type: "string"
         description: "URL to the runfolder service"
         required: true
-        default: "{{ config_context.runfolder_service_urls }}"
+        default: "{{ config_context.runfolder_service_url }}"
       bcl2fastq_url:
         type: "string"
         description: "URL to the runfolder service"
