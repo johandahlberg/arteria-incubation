@@ -43,6 +43,14 @@ class ArteriaRunfolderServiceAction(Action):
             return False, json.loads(response.text)
 
     def set_state(self, url, runfolder, state):
+        if not state:
+            self.logger.error("You have to specify a state!")
+            return False, ""
+
+        if not runfolder:
+            self.logger.error("You have to specify a runfolder!")
+            return False, ""
+
         set_state_url = "{}/{}/{}".format(url.strip("/"), "api/1.0/runfolders/path", runfolder)
         response = requests.post(set_state_url, data=json.dumps({"state": state.lower()}))
         if response.status_code == 200:
