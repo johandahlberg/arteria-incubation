@@ -2,7 +2,7 @@ version: '2.0'
 
 name: arteria.workflow_bcl2fastq_and_checkqc
 description: >
-  This sample workflow will run bcl2fastq and checkc on a runfolder.
+  This sample workflow will run bcl2fastq and checkqc on a runfolder.
 
 workflows:
   main:
