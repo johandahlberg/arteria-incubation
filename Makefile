@@ -1,3 +1,6 @@
+# This file has been modified from the https://github.com/StackStorm/st2-docker repo
+# It is therefore subject to Apache Licence 2.0.
+# It has been modified to work with the specific Arteria services and workflow.
 
 up:
 	docker-compose up -d
