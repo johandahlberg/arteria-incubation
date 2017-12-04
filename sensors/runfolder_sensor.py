@@ -18,14 +18,9 @@ class RunfolderSensor(PollingSensor):
 
     def setup(self):
         self._infolog("setup")
-        try:
-            client_urls = self._config["runfolder_service_urls"]
-            self._client = RunfolderClient(client_urls, self._logger)
-            self._infolog("Created client: {0}".format(self._client))
-        except Exception as ex:
-            # TODO: It seems that st2 isn't logging the entire exception, or
-            # they're not in /var/log/st2
-            self._logger.error(str(ex))
+        client_urls = self._config["runfolder_service_urls"]
+        self._client = RunfolderClient(client_urls, self._logger)
+        self._infolog("Created client: {0}".format(self._client))
         self._infolog("setup finished")
 
     def poll(self):

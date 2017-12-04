@@ -10,7 +10,10 @@ class RunfolderClient():
     def __init__(self, hosts, logger):
         """Initializes the client with a list of hosts""" 
         logger.info("__init__ RunfolderClient")
-        self._hosts = hosts
+        if not isinstance(hosts, list):
+            self._hosts = [hosts]
+        else:
+            self._hosts = hosts
         self._logger = logger
 
     def next_ready(self):
@@ -36,4 +39,3 @@ class RunfolderClient():
             except requests.exceptions.ConnectionError:
                self._logger.error("RunfolderClient: Not able to connect to host {0}".format(host))
         return None
-                
