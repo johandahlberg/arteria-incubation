@@ -3,7 +3,7 @@ name: "bcl2fastq-service"
 runner_type: "python-script"
 description: "Pass commands to the bcl2fastq service"
 enabled: true
-entry_point: "bcl2fastq-service.py"
+entry_point: "bcl2fastq_service.py"
 parameters:
       cmd:
         type: "string"
