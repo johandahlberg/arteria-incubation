@@ -26,12 +26,11 @@ class RunfolderClient():
             try:
                 resp = requests.get(url)
                 if resp.status_code != 200:
-                    self._logger.error("RunfolderClient: Got status_code={0} from endpoint {1}".
-                        format(resp.status_code, url))
+                    self._logger.error("RunfolderClient: Got status_code={0} from "
+                                       "endpoint {1}".format(resp.status_code, url))
                 else:
                     json = resp.text
-                    self._logger.debug("RunfolderClient: Successful call to {0}. {1}.".
-                        format(url, json))
+                    self._logger.debug("RunfolderClient: Successful call to {0}. {1}.".format(url, json))
                     result = dict()
                     result['response'] = jsonpickle.decode(json)
                     result['requesturl'] = url

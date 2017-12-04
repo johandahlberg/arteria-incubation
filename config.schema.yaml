@@ -1,6 +1,6 @@
 ---
 
-runfolder_service_urls:
+runfolder_service_url:
   description: "Urls for the runfolder service"
   type: "string"
   required: false
