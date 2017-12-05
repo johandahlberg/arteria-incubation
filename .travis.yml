@@ -4,9 +4,9 @@ services:
  - docker
 before_script:
  - docker-compose up -d --build --force-recreate
- - cp /opt/stackstorm/packs/arteria/default.config.yaml /opt/stackstorm/configs/arteria.yaml
+ - docker-compose exec stackstorm cp /opt/stackstorm/packs/arteria/default.config.yaml /opt/stackstorm/configs/arteria.yaml
  - docker-compose exec stackstorm st2ctl reload --register-all
- - st2 run packs.setup_virtualenv packs=arteria
+ - docker-compose exec stackstorm st2 run packs.setup_virtualenv packs=arteria
 
 script:
  - docker-compose exec stackstorm st2-run-pack-tests -p /opt/stackstorm/packs/arteria
