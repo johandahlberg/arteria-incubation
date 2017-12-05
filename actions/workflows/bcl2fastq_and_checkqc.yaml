@@ -23,7 +23,7 @@ workflows:
           - mark_as_started
 
       mark_as_started:
-        action: arteria.runfolder-service
+        action: arteria.runfolder_service
         input:
           cmd: set_state
           runfolder: "{{ _.runfolder_path }}"
@@ -61,7 +61,7 @@ workflows:
           - mark_as_error: "{{ task('checkqc').result.body.exit_status != 0}}"
 
       mark_as_done:
-        action: arteria.runfolder-service
+        action: arteria.runfolder_service
         input:
           cmd: set_state
           url: http://runfolder-service
@@ -69,7 +69,7 @@ workflows:
           state: done
 
       mark_as_error:
-        action: arteria.runfolder-service
+        action: arteria.runfolder_service
         input:
           cmd: set_state
           url: http://runfolder-service

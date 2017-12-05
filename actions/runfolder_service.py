@@ -15,7 +15,7 @@ class ArteriaRunfolderServiceAction(Action):
     def _verify_command_valid(self, cmd):
         return cmd in self.COMMANDS
 
-    def run(self, cmd, url, runfolder, state):
+    def run(self, cmd, url, runfolder=None, state=None):
 
         if not self._verify_command_valid(cmd):
             self.logger.error("Command: {} is not valid. Valid commands are: {}".format(cmd, self.COMMANDS))

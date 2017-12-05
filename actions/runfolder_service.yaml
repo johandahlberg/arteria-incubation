@@ -3,7 +3,7 @@ name: "runfolder-service"
 runner_type: "python-script"
 description: "Pass commands to the runfolder service"
 enabled: true
-entry_point: "runfolder-service.py"
+entry_point: "runfolder_service.py"
 parameters:
       cmd:
         type: "string"
