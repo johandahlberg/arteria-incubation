@@ -1,5 +1,5 @@
 ---
-name: "runfolder-service"
+name: "runfolder_service"
 runner_type: "python-script"
 description: "Pass commands to the runfolder service"
 enabled: true

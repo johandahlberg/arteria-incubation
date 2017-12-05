@@ -24,16 +24,12 @@ class RunfolderSensor(PollingSensor):
         self._infolog("setup finished")
 
     def poll(self):
-        try:
-            self._infolog("poll")
-            self._infolog("Checking for available runfolders")
-            result = self._client.next_ready()
-            self._infolog("Result from client: {0}".format(result))
-
-            if result:
-                self._handle_result(result)
-        except Exception as ex:
-            self._logger.error(str(ex))
+        self._infolog("poll")
+        self._infolog("Checking for available runfolders")
+        result = self._client.next_ready()
+        self._infolog("Result from client: {0}".format(result))
+        if result:
+            self._handle_result(result)
 
     def cleanup(self):
         self._infolog("cleanup")

@@ -1,7 +1,6 @@
 import requests
 import jsonpickle
 
-print "runfolder_client module loaded"
 
 class RunfolderClient():
     """Pulls data from all known runfolder services. If there are issues with connecting

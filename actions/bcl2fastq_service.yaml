@@ -1,5 +1,5 @@
 ---
-name: "bcl2fastq-service"
+name: "bcl2fastq_service"
 runner_type: "python-script"
 description: "Pass commands to the bcl2fastq service"
 enabled: true
