@@ -65,11 +65,11 @@ Arteria pack. You only need to do this the first time you bring up the environme
 # Copy the default config into the StackStorm config directory
 cp /opt/stackstorm/packs/arteria/default.config.yaml /opt/stackstorm/configs/arteria.yaml
 
+# Register packs and configuration values
+st2ctl reload --register-all
+
 # Ensure that the Arteria virtual env is installed
 st2 run packs.setup_virtualenv packs=arteria
-
-# Register the new configuration values
-st2ctl reload --register-configs
 ```
 
 Now the environment should be ready to run a workflow.
@@ -140,5 +140,5 @@ Running tests
 To run the pack tests, run the following command in the StackStorm container:
 
 ```
-st2-run-pack-tests -c -j -v -p /opt/stackstorm/packs/arteria
+st2-run-pack-tests -c -v -p /opt/stackstorm/packs/arteria
 ```
