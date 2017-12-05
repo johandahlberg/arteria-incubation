@@ -128,7 +128,7 @@ st2 rule enable arteria.when_runfolder_is_ready_start_bcl2fastq
 Then to start processing the runfolder, set its state to `ready` using:
 
 ```
-st2 run arteria.runfolder-service cmd="set_state" state="ready" runfolder="/opt/monitored-folder/<name of your runfolder>" url="http://runfolder-service"
+st2 run arteria.runfolder_service cmd="set_state" state="ready" runfolder="/opt/monitored-folder/<name of your runfolder>" url="http://runfolder-service"
 ```
 
 Withing 15s you should if you execute `st2 execution list` see that a workflow processing that runfolder
