@@ -18,7 +18,7 @@ class RunfolderSensor(PollingSensor):
 
     def setup(self):
         self._infolog("setup")
-        client_urls = self._config["runfolder_service_urls"]
+        client_urls = self._config["runfolder_service_url"]
         self._client = RunfolderClient(client_urls, self._logger)
         self._infolog("Created client: {0}".format(self._client))
         self._infolog("setup finished")
