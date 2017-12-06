@@ -120,3 +120,4 @@ networks:
     driver: bridge
   private:
     driver: bridge
+    internal: true

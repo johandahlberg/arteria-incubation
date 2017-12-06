@@ -65,11 +65,11 @@ Arteria pack. You only need to do this the first time you bring up the environme
 # Copy the default config into the StackStorm config directory
 cp /opt/stackstorm/packs/arteria/default.config.yaml /opt/stackstorm/configs/arteria.yaml
 
+# Register packs and configuration values
+st2ctl reload --register-all
+
 # Ensure that the Arteria virtual env is installed
 st2 run packs.setup_virtualenv packs=arteria
-
-# Register the new configuration values
-st2ctl reload --register-configs
 ```
 
 Now the environment should be ready to run a workflow.
@@ -128,7 +128,7 @@ st2 rule enable arteria.when_runfolder_is_ready_start_bcl2fastq
 Then to start processing the runfolder, set its state to `ready` using:
 
 ```
-st2 run arteria.runfolder-service cmd="set_state" state="ready" runfolder="/opt/monitored-folder/<name of your runfolder>" url="http://runfolder-service"
+st2 run arteria.runfolder_service cmd="set_state" state="ready" runfolder="/opt/monitored-folder/<name of your runfolder>" url="http://runfolder-service"
 ```
 
 Withing 15s you should if you execute `st2 execution list` see that a workflow processing that runfolder
@@ -140,5 +140,5 @@ Running tests
 To run the pack tests, run the following command in the StackStorm container:
 
 ```
-st2-run-pack-tests -c -j -v -p /opt/stackstorm/packs/arteria
+st2-run-pack-tests -c -v -p /opt/stackstorm/packs/arteria
 ```
