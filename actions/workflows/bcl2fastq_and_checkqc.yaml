@@ -12,6 +12,7 @@ workflows:
       - runfolder_url
       - bcl2fastq_url
       - checkqc_url
+      - bcl2fastq_body
     tasks:
       get_runfolder_name:
         action: core.local
@@ -38,6 +39,7 @@ workflows:
           cmd: start
           runfolder: "{{ _.runfolder }}"
           url: http://bcl2fastq-service
+          bcl2fastq_body: "{{ _.bcl2fastq_body }}"
         publish:
           bcl2fastq_status_url: "{{ task('start_bcl2fastq').result.result.link }}"
         on-success:
@@ -49,6 +51,7 @@ workflows:
           cmd: poll
           status_url: "{{ _.bcl2fastq_status_url }}"
           sleep: 5
+          timeout: 36000 # 10h
         on-success:
           - checkqc
 

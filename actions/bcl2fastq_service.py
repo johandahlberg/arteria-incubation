@@ -39,7 +39,9 @@ class ArteriaBcl2FastqServiceAction(Action):
 
         start_url = "{}/api/1.0/start/{}".format(url.strip("/"), runfolder)
 
-        if not bcl2fastq_body:
+        if bcl2fastq_body:
+            bcl2fastq_body = json.loads(bcl2fastq_body)
+        else:
             bcl2fastq_body = ""
 
         response = requests.post(start_url, data=json.dumps(bcl2fastq_body))

@@ -24,3 +24,8 @@ parameters:
         description: "URL to the runfolder service"
         required: true
         default: "{{ config_context.checkqc_service_url }}"
+      bcl2fastq_body:
+        type: "string"
+        description: "Body to send to bcl2fastq (can e.g. be used to specify additional args for bcl2fastq."
+        required: false
+
