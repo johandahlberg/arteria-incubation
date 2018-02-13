@@ -1,0 +1,13 @@
+before_script:
+  - make up
+
+test_pack:
+  stage: test
+  script:
+    - make test-pack
+
+test_integration:
+  stage: test
+  script:
+    - test-integration
+
