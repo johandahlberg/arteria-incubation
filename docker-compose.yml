@@ -29,6 +29,11 @@ services:
       - ./docker-runtime/st2.d:/st2-docker/st2.d
       - ./docker-conf/stackstorm.env:/st2-docker/env
     dns_search: .
+    depends_on:
+      - mongo
+      - rabbitmq
+      - postgres
+      - redis
 
 ### Arteria Services
   runfolder-service:
