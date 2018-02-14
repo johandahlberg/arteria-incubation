@@ -19,7 +19,7 @@ test-pack: up
 	docker exec stackstorm st2-run-pack-tests -c -v -p /opt/stackstorm/packs/arteria
 
 test-integration: up
-	docker exec -it stackstorm /opt/stackstorm/packs/arteria/tests/integration_tests
+	docker exec stackstorm /opt/stackstorm/packs/arteria/tests/integration_tests
 
 exec:
 	docker exec -it stackstorm $(cmd)
