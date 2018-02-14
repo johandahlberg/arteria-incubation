@@ -3,6 +3,7 @@
 # It has been modified to work with the specific Arteria services and workflow.
 
 up:
+	mkdir -p docker-mountpoints docker-runtime
 	docker-compose up -d
 
 down:
