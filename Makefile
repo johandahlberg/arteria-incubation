@@ -3,7 +3,10 @@
 # It has been modified to work with the specific Arteria services and workflow.
 
 up:
-	mkdir -p docker-mountpoints docker-runtime
+	mkdir -p docker-mountpoints/bcl2fastq-output
+	mkdir -p docker-mountpoints/monitored-folder
+	mkdir -p docker-runtime/entrypoint.d
+	mkdir -p docker-runtime/st2.d
 	docker-compose up -d
 
 down:
