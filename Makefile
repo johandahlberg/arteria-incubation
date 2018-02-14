@@ -12,10 +12,10 @@ interact: up
 	docker exec -it stackstorm /bin/bash
 
 test-pack: up
-	docker exec -it stackstorm st2-run-pack-tests -c -v -p /opt/stackstorm/packs/arteria
+	docker exec stackstorm st2-run-pack-tests -c -v -p /opt/stackstorm/packs/arteria
 
 test-integration: up
-	docker exec -it stackstorm /opt/stackstorm/packs/arteria/tests/integration_tests
+	docker exec stackstorm /opt/stackstorm/packs/arteria/tests/integration_tests
 
 exec:
 	docker exec -it stackstorm $(cmd)
