@@ -9,5 +9,5 @@ test_pack:
 test_integration:
   stage: test
   script:
-    - test-integration
+    - make test-integration
 
