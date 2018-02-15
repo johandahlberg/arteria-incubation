@@ -1,12 +1,12 @@
 before_script:
   - make up
 
-test_pack:
-  stage: test
-  script:
-    - make test-pack
-  tags:
-    - docker_compose
+#test_pack:
+#  stage: test
+#  script:
+#    - make test-pack
+#  tags:
+#    - docker_compose
 
 test_integration:
   stage: test
