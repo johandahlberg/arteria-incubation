@@ -3,6 +3,8 @@
 # It has been modified to work with the specific Arteria services and workflow.
 
 up:
+	@if [ ${ARTERIA_MONITORED_FOLDER} == '']; then export ARTERIA_MONITORED_FOLDER="${PWD}/docker-mountpoints/monitored-folder/"; fi;
+	echo ${ARTERIA_MONITORED_FOLDER}
 	mkdir -p docker-mountpoints/bcl2fastq-output
 	mkdir -p docker-mountpoints/monitored-folder
 	mkdir -p docker-runtime/entrypoint.d

@@ -44,7 +44,7 @@ services:
     networks:
       - private
     volumes:
-      - ./docker-mountpoints/monitored-folder:/opt/monitored-folder
+      - monitored-dir-volume:/opt/monitored-folder
     dns_search: .
 
   bcl2fastq-service:
@@ -55,7 +55,7 @@ services:
     networks:
       - private
     volumes:
-      - ./docker-mountpoints/monitored-folder:/opt/monitored-folder
+      - monitored-dir-volume:/opt/monitored-folder
       - ./docker-mountpoints/bcl2fastq-output:/bcl2fastq-output
     dns_search: .
 
@@ -67,7 +67,7 @@ services:
     networks:
       - private
     volumes:
-      - ./docker-mountpoints/monitored-folder:/opt/monitored-folder
+      - monitored-dir-volume:/opt/monitored-folder
       - ./docker-mountpoints/bcl2fastq-output:/bcl2fastq-output
     dns_search: .
 ### External Services
@@ -122,6 +122,11 @@ volumes:
   rabbitmq-volume:
   redis-volume:
   stackstorm-log-volume:
+  monitored-dir-volume:
+    driver_opts:
+      type: none
+      device: $ARTERIA_MONITORED_FOLDER
+      o: bind
 
 networks:
   public:
