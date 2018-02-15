@@ -111,6 +111,9 @@ services:
       - private
     volumes:
       - redis-volume:/data
+    command: [
+    'bash', '-c', 'docker-entrypoint.sh --requirepass "$$REDIS_PASSWORD"'
+    ]
     dns_search: .
 
 volumes:
