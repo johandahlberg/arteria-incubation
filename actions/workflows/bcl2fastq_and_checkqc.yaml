@@ -46,7 +46,7 @@ workflows:
           - poll_bcl2fastq
 
       poll_bcl2fastq:
-        action: arteria.bcl2fastq-service
+        action: arteria.bcl2fastq_service
         input:
           cmd: poll
           status_url: "{{ _.bcl2fastq_status_url }}"
