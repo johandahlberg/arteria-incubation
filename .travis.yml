@@ -5,9 +5,7 @@ services:
 env:
   - ARTERIA_MONITORED_FOLDER=${PWD}/docker-mountpoints/monitored-folder/
 before_script:
- - docker-compose up -d --build --force-recreate
- - docker-compose exec stackstorm st2ctl reload --register-all
- - docker-compose exec stackstorm st2 run packs.setup_virtualenv packs=arteria
+ - make up
 
 script:
- - docker-compose exec stackstorm st2-run-pack-tests -p /opt/stackstorm/packs/arteria
+ - make test-pack
