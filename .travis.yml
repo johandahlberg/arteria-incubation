@@ -2,6 +2,8 @@ language: python
 sudo: required
 services:
  - docker
+env:
+  - ARTERIA_MONITORED_FOLDER=${PWD}/docker-mountpoints/monitored-folder/
 before_script:
  - docker-compose up -d --build --force-recreate
  - docker-compose exec stackstorm st2ctl reload --register-all
