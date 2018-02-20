@@ -37,7 +37,7 @@ services:
 
 ### Arteria Services
   runfolder-service:
-    build: images/runfolder-service
+    build: docker-images/runfolder-service
     container_name: runfolder-service
     ports:
       - "8080:80"
@@ -48,7 +48,7 @@ services:
     dns_search: .
 
   bcl2fastq-service:
-    build: images/bcl2fastq-service
+    build: docker-images/bcl2fastq-service
     container_name: bcl2fastq-service
     ports:
       - "8081:80"
@@ -60,7 +60,7 @@ services:
     dns_search: .
 
   checkqc-service:
-    build: images/checkqc-service
+    build: docker-images/checkqc-service
     container_name: checkqc-service
     ports:
       - "8082:80"
