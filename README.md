@@ -1,11 +1,10 @@
-Arteria pack
+Arteria Pack
 ============
 
-This is the new and improved version of the Arteria StackStorm pack, it has been
-considerably slimmed down compared to previous version.
+This is the new and improved version of the Arteria StackStorm pack.
 
 The aim of this pack is to provide re-usable units for automating tasks at a
-sequencing core. However, the type of things presented here can be of use to any
+sequencing core facility. However, the type of things presented here can be of use to any
 group which does enough sequencing that a high degree of automation is necessary.
 
 This pack is indented as a starting point, not a turn-key solution. Most sequencing cores
@@ -15,21 +14,72 @@ however, the components provided here can make that work easier.
 For more information on Arteria in general, look at our pre-print here:
 https://www.biorxiv.org/content/early/2017/11/06/214858
 
+tl;dr
+=====
+Just want to get going and already have Docker and Docker Compose installed?
+Here is how you can get going:
+
+```
+make up
+
+# Place a runfolder in `/docker-mountpoints/monitored-folder`
+
+docker exec stackstorm st2 run packs.setup_virtualenv packs=arteria
+docker exec stackstorm st2 run arteria.workflow_bcl2fastq_and_checkqc \
+  runfolder_path='/opt/monitored-folder/<name of the runfolder>' \
+  bcl2fastq_body='{"additional_args": "--ignore-missing-bcls --ignore-missing-filter --ignore-missing-positions --tiles s_1", "use_base_mask": "--use-bases-mask y1n*,n*"}'
+```
+
 Acknowledgements
 ================
-The docker environment provided here has been heavily inspired by the one provided by
+The docker environment provided here has been heavily inspired by the ones provided by
 [StackStorm](https://github.com/StackStorm/st2-docker) and [UMCCR](https://github.com/umccr/st2-arteria-docker).
 
 What does Arteria pack do?
 ==========================
-TODO
+Arteria is a pack for the [StackStorm](http://stackstorm.com/) event-driven automation platform. It provides re-usable components for StackStorm in the 
+  form of actions, workflows, sensors, and rules. For more information about these concepts, see the [StackStorm docs](https://docs.stackstorm.com). 
+A very quick summary of the different concepts:
 
-General outline of system
-=========================
-TODO
+- Actions encapsulate things that the system can do, e.g. calling a web-service or running a shell script
+ - Workflows tie actions together
+ - Sensors pick up events from the environment, e.g. looks for a file to appear on a file system, or polls a web-service for new information
+ - Rules parse events from sensors and decide if an action or a workflow should be fired or not based on the information they recive 
 
-Usage
-=====
+The components provided by Arteria pack have to proposes:
+
+- To be a point of collaboration for the Arteria community where StackStorm components which have a re-use potential can be 
+deposited
+- To provide a starting point for people interested in implementing an Arteria system to get started quickly.
+
+To make it easier to get started, this repo therefore also contains the code and setup necessary to start a container based Arteria system, which 
+in addition to running a StackStorm instance, also runs a set of Arteria micro-services, which make it possible to run bcl2fastq on an Illumina 
+runfolder, and then check that is passes a set of quality criteria using [checkQC](https://github.com/Molmed/checkQC)
+
+General outline of this repository 
+==================================
+
+```
+.
+├── actions = directory with all StackStorm actions
+│   └── workflows = contains StackStorm workflows
+├── aliases = contains StackStorm aliaes (used e.g. for ChatOps)
+├── docker-conf = contains files specifying the environment for the different docker images in the system
+├── docker-mountpoints
+│   ├── bcl2fastq-output = when running the included sample workflow, bcl2fastq will place it's output here
+│   └── monitored-folder = this is where you need to place any runfolder that you want the system to be able to access
+├── docker-runtime = placing scripts here which will run when launching the containers, see: https://github.com/StackStorm/st2-docker#running-custom-shell-scripts-on-boot
+│   ├── entrypoint.d
+│   └── st2.d
+├── docker-images = this is where all docker files used to create the Arteria containers will exist.
+│   ├── bcl2fastq-service
+│   ├── checkqc-service
+│   └── runfolder-service
+├── policies = place for StackStorm policies (can e.g. be used to limit concurrency of actions)
+├── rules = place for StackStorm rules 
+├── sensors = place for StackStorm sensors
+└── tests = this directory contains all test code, both for action unit tests, but also integration testing code
+```
 
 Getting started / Installation
 ------------------------------
@@ -40,7 +90,7 @@ To get started with it follow the installation guides for you platform for [Dock
  and [Docker Compose](https://docs.docker.com/compose/install/).
 
 Once you have that installed, ensure that you have Make installed (should be available from
-your favorite package manager). Then you can get the sytem up and running by executing the
+your favorite package manager). Then you can get the system up and running by executing the
 following command:
 
 ```
