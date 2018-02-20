@@ -30,11 +30,6 @@ docker exec stackstorm st2 run arteria.workflow_bcl2fastq_and_checkqc \
   bcl2fastq_body='{"additional_args": "--ignore-missing-bcls --ignore-missing-filter --ignore-missing-positions --tiles s_1", "use_base_mask": "--use-bases-mask y1n*,n*"}'
 ```
 
-Acknowledgements
-================
-The docker environment provided here has been heavily inspired by the ones provided by
-[StackStorm](https://github.com/StackStorm/st2-docker) and [UMCCR](https://github.com/umccr/st2-arteria-docker).
-
 What does Arteria pack do?
 ==========================
 Arteria is a pack for the [StackStorm](http://stackstorm.com/) event-driven automation platform. It provides re-usable components for StackStorm in the 
@@ -192,3 +187,9 @@ To run the pack tests, run the following command in the StackStorm container:
 ```
 st2-run-pack-tests -c -v -p /opt/stackstorm/packs/arteria
 ```
+
+Acknowledgements
+================
+The docker environment provided here has been heavily inspired by the ones provided by
+[StackStorm](https://github.com/StackStorm/st2-docker) and [UMCCR](https://github.com/umccr/st2-arteria-docker).
+
