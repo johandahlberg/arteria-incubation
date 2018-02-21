@@ -7,7 +7,7 @@ The aim of this pack is to provide re-usable units for automating tasks at a
 sequencing core facility. However, the type of things presented here can be of use to any
 group which does enough sequencing that a high degree of automation is necessary.
 
-This pack is indented as a starting point, not a turn-key solution. Most sequencing cores
+This pack is intended as a starting point, not a turn-key solution. Most sequencing cores
 will have a sufficiently unique environment that a specialized solution has to be developed,
 however, the components provided here can make that work easier.
 
@@ -41,7 +41,7 @@ A very quick summary of the different concepts:
  - Sensors pick up events from the environment, e.g. looks for a file to appear on a file system, or polls a web-service for new information
  - Rules parse events from sensors and decide if an action or a workflow should be fired or not based on the information they recive 
 
-The components provided by Arteria pack have to proposes:
+The components provided by Arteria pack have two purposes:
 
 - To be a point of collaboration for the Arteria community where StackStorm components which have a re-use potential can be 
 deposited
