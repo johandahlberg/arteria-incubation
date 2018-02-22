@@ -2,13 +2,18 @@
 # It is therefore subject to Apache Licence 2.0.
 # It has been modified to work with the specific Arteria services and workflow.
 
-up:
-	@if [ ${ARTERIA_MONITORED_FOLDER} == '']; then export ARTERIA_MONITORED_FOLDER="${PWD}/docker-mountpoints/monitored-folder/"; fi;
-	echo ${ARTERIA_MONITORED_FOLDER}
+# If ARTERIA_MONITORED_FOLDER is not defined in the environment set it to the
+# default of using a monitored folder in the arteria repo
+export ARTERIA_MONITORED_FOLDER ?= ${PWD}/docker-mountpoints/monitored-folder/
+
+prepare:
 	mkdir -p docker-mountpoints/bcl2fastq-output
 	mkdir -p docker-mountpoints/monitored-folder
 	mkdir -p docker-runtime/entrypoint.d
 	mkdir -p docker-runtime/st2.d
+
+up:
+	echo ${ARTERIA_MONITORED_FOLDER}
 	docker-compose up -d
 
 down:

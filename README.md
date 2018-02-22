@@ -20,6 +20,9 @@ Just want to get going and already have Docker and Docker Compose installed?
 Here is how you can get going:
 
 ```
+git clone https://github.com/johandahlberg/arteria-incubation.git
+cd arteria-incubation
+make prepare
 make up
 
 # Place a runfolder in `/docker-mountpoints/monitored-folder`
@@ -86,9 +89,12 @@ To get started with it follow the installation guides for you platform for [Dock
 
 Once you have that installed, ensure that you have Make installed (should be available from
 your favorite package manager). Then you can get the system up and running by executing the
-following command:
+following set of commands:
 
 ```
+git clone https://github.com/johandahlberg/arteria-incubation.git
+cd arteria-incubation
+make prepare
 make up
 ```
 
