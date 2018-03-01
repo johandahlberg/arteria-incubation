@@ -11,9 +11,9 @@ prepare:
 	mkdir -p docker-mountpoints/monitored-folder
 	mkdir -p docker-runtime/entrypoint.d
 	mkdir -p docker-runtime/st2.d
+	docker volume create --opt "device=${ARTERIA_MONITORED_FOLDER}" --opt "type=local" --opt "o=bind" monitored-dir-volume
 
-up:
-	echo ${ARTERIA_MONITORED_FOLDER}
+up: prepare
 	docker-compose up -d
 
 down:
