@@ -7,10 +7,10 @@
 export ARTERIA_MONITORED_FOLDER ?= ${PWD}/docker-mountpoints/monitored-folder/
 
 prepare:
-	mkdir -p docker-mountpoints/bcl2fastq-output
-	mkdir -p docker-mountpoints/monitored-folder
-	mkdir -p docker-runtime/entrypoint.d
-	mkdir -p docker-runtime/st2.d
+	mkdir -p -m 2770 docker-mountpoints/bcl2fastq-output
+	mkdir -p -m 2770 docker-mountpoints/monitored-folder
+	mkdir -p -m 2770 docker-runtime/entrypoint.d
+	mkdir -p -m 2770 docker-runtime/st2.d
 	docker volume create --opt "device=${ARTERIA_MONITORED_FOLDER}" --opt "type=local" --opt "o=bind" monitored-dir-volume
 
 up: prepare
